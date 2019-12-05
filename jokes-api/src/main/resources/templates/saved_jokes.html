@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Styles -->
+    <!--    <link href="css/main.css" rel="stylesheet" type="text/css">-->
+
+    <title>Saved Jokes</title>
+</head>
+<body>
+<div class="mt-5 mb-5">
+    <a href="/">View New Jokes</a>
+</div>
+<div th:each="joke: ${jokes}" class="mt-5">
+    <div th:if="${joke.type == 'twopart'}">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span th:text="${joke.setup}"></span></li>
+            <li class="list-group-item"><span th:text="${joke.delivery}"></span></li>
+        </ul>
+    </div>
+
+    <div th:unless="${joke.type == 'twopart'}">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span th:text="${joke.joke}"></span></li>
+        </ul>
+    </div>
+</div>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
