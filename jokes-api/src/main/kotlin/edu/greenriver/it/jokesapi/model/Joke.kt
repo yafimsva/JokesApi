@@ -10,8 +10,6 @@ class Joke (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long,
-        var category: String,
         var type: String,
-        var setup: String?,
-        var delivery: String?,
-        var joke: String?)
+        var setup: String,
+        var punchline: String)

@@ -18,20 +18,18 @@
         <a href="/saved" >View Saved Jokes</a>
     </div>
 
-    <div th:if="${joke.type == 'twopart'}">
+    <div>
         <span th:text="${joke.setup}"></span>
         <br>
-        <span th:text="${joke.delivery}"></span>
+        <span th:text="${joke.punchline}"></span>
 
     </div>
 
-    <div th:unless="${joke.type == 'twopart'}">
-        <span th:text="${joke.joke}"></span>
-    </div>
 
 
-
-    <button class="btn btn-success"  th:attr="onclick='${saveJoke}'">Save Joke</button>
+    <form  th:action="@{/api/jokes}" th:object="${joke}" method="post">
+        <button class="btn btn-success" th:type="submit">Save Joke</button>
+    </form>
 
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>

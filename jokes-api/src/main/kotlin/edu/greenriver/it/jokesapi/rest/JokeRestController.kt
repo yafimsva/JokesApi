@@ -2,9 +2,7 @@ package edu.greenriver.it.jokesapi.rest
 
 import edu.greenriver.it.jokesapi.model.Joke
 import edu.greenriver.it.jokesapi.repositories.IJokeRepository
-import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
-import java.awt.PageAttributes
 import java.util.*
 
 @RestController
@@ -17,7 +15,7 @@ internal class JokeRestController(private val repository: IJokeRepository)
         return repository.findAll()
     }
 
-    @PostMapping("/jokes")
+    @PostMapping("/jokes", consumes = ["application/json; charset=utf8"], produces = ["application/json; charset=utf8"])
     fun newJoke(@RequestBody newJoke: Joke): Joke
     {
         return repository.save(newJoke)
@@ -34,11 +32,9 @@ internal class JokeRestController(private val repository: IJokeRepository)
     {
         return repository.findById(id)
                 .map { joke ->
-                    joke.category = newJoke.category
                     joke.type = newJoke.type
                     joke.setup = newJoke.setup
-                    joke.delivery = newJoke.delivery
-                    joke.joke = newJoke.joke
+                    joke.punchline = newJoke.punchline
 
                     repository.save(joke)
                 }

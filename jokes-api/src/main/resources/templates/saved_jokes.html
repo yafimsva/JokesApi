@@ -18,16 +18,10 @@
     <a href="/">View New Jokes</a>
 </div>
 <div th:each="joke: ${jokes}" class="mt-5">
-    <div th:if="${joke.type == 'twopart'}">
+    <div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><span th:text="${joke.setup}"></span></li>
-            <li class="list-group-item"><span th:text="${joke.delivery}"></span></li>
-        </ul>
-    </div>
-
-    <div th:unless="${joke.type == 'twopart'}">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span th:text="${joke.joke}"></span></li>
+            <li class="list-group-item"><span th:text="${joke.punchline}"></span></li>
         </ul>
     </div>
 </div>
